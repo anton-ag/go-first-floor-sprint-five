@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"time"
 )
 
@@ -135,7 +136,7 @@ func (w Walking) Calories() float64 {
 	// вставьте ваш код ниже
 	v := w.meanSpeed() * KmHInMsec
 	h := w.Height / CmInM
-	return ((CaloriesWeightMultiplier*w.Training.Weight + ((v*v)/h)*CaloriesSpeedHeightMultiplier*w.Weight) * w.Duration.Hours() * MinInHours)
+	return ((CaloriesWeightMultiplier*w.Training.Weight + ((math.Pow(v, 2))/h)*CaloriesSpeedHeightMultiplier*w.Weight) * w.Duration.Hours() * MinInHours)
 }
 
 // TrainingInfo возвращает структуру InfoMessage с информацией о проведенной тренировке.
